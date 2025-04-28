@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import authRoutes from "./routes/auth.routes";
 import profileRoutes from "./routes/profile.routes";
 import jobRoutes from "./routes/job.routes";
+import resumeRoutes from "./routes/resume.routes";
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/profile", profileRoutes);
 app.use("/api/job", jobRoutes);
+app.use("/api/resume", resumeRoutes);
 
 app.get("/", (_req, res) => {
   res.send("API running...");
