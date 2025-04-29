@@ -14,7 +14,7 @@ const app = express();
 app.use(
   cors({
     origin:
-      "https://hackathon-frontend-mzgqtswc9-shivam-tyagis-projects.vercel.app",
+      "https://hackathon-frontend-nm7rl67d5-shivam-tyagis-projects.vercel.app",
   })
 );
 app.use(express.json());
