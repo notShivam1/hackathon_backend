@@ -13,7 +13,9 @@ const app = express();
 
 app.use(
   cors({
-    origin: "*",
+    origin:
+      "https://hackathon-frontend-aq7qflpa5-shivam-tyagis-projects.vercel.app", // ✅ your actual Vercel URL
+    credentials: true, // if using cookies/auth headers
   })
 );
 app.use(express.json());
