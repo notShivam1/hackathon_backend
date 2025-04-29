@@ -11,6 +11,7 @@ const upload = multer({ storage: multer.memoryStorage() });
 
 router.post(
   "/upload",
+  // @ts-ignore
   protect,
   authorize("CANDIDATE"),
   upload.single("file"),
