@@ -8,13 +8,14 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  password  String
-  role      Role     @default(CANDIDATE)
-  profile   Profile?
-  jobs      Job[]    @relation("EmployerJobs")
-  createdAt DateTime @default(now())
+  id          Int           @id @default(autoincrement())
+  email       String        @unique
+  password    String
+  role        Role          @default(CANDIDATE)
+  profile     Profile?
+  jobs        Job[]         @relation("EmployerJobs")
+  createdAt   DateTime      @default(now())
+  ResumeMatch ResumeMatch[]
 }
 
 model Profile {
@@ -28,14 +29,26 @@ model Profile {
 }
 
 model Job {
-  id           Int      @id @default(autoincrement())
+  id           Int           @id @default(autoincrement())
   employerId   Int
   title        String
   description  String
   requirements String
   vector       String? // JSON string (vectorized job description)
-  createdAt    DateTime @default(now())
-  employer     User     @relation("EmployerJobs", fields: [employerId], references: [id])
+  createdAt    DateTime      @default(now())
+  employer     User          @relation("EmployerJobs", fields: [employerId], references: [id])
+  ResumeMatch  ResumeMatch[]
+}
+
+model ResumeMatch {
+  id          Int      @id @default(autoincrement())
+  candidateId Int
+  jobId       Int
+  score       Float
+  createdAt   DateTime @default(now())
+
+  candidate User @relation(fields: [candidateId], references: [id])
+  job       Job  @relation(fields: [jobId], references: [id])
 }
 
 enum Role {

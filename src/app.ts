@@ -5,6 +5,7 @@ import authRoutes from "./routes/auth.routes";
 import profileRoutes from "./routes/profile.routes";
 import jobRoutes from "./routes/job.routes";
 import resumeRoutes from "./routes/resume.routes";
+import matchesRoutes from "./routes/match.routes";
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/profile", profileRoutes);
 app.use("/api/job", jobRoutes);
 app.use("/api/resume", resumeRoutes);
+app.use("/api/matches", matchesRoutes);
 
 app.get("/", (_req, res) => {
   res.send("API running...");
